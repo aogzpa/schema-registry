@@ -1,6 +1,8 @@
 syntax = "proto3";
 
 import "confluent/meta.proto";
+import "Pii.proto";
+import "Kind.proto";
 
 package io.confluent.kafka.schemaregistry.rules;
 
@@ -25,14 +27,3 @@ message Widget {
     int32 size = 14;
     int32 version = 15;
 }
-
-message Pii {
-    string pii = 1 [(.confluent.field_meta).tags = "PII"];
-}
-
-enum Kind {
-    ZERO = 0;
-    ONE = 1;
-    TWO = 2;
-}
-

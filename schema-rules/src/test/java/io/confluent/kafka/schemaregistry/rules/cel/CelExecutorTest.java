@@ -57,10 +57,9 @@ import io.confluent.kafka.schemaregistry.json.JsonSchemaUtils;
 import io.confluent.kafka.schemaregistry.protobuf.ProtobufSchema;
 import io.confluent.kafka.schemaregistry.protobuf.ProtobufSchemaProvider;
 import io.confluent.kafka.schemaregistry.rules.DlqAction;
+import io.confluent.kafka.schemaregistry.rules.KindProto;
 import io.confluent.kafka.schemaregistry.rules.PiiProto;
 import io.confluent.kafka.schemaregistry.rules.RuleException;
-import io.confluent.kafka.schemaregistry.rules.WidgetProto.Kind;
-import io.confluent.kafka.schemaregistry.rules.WidgetProto.Pii;
 import io.confluent.kafka.schemaregistry.rules.WidgetProto.Widget;
 import io.confluent.kafka.schemaregistry.rules.WidgetProto2;
 import io.confluent.kafka.schemaregistry.rules.WidgetProto2.Widget2;
@@ -1333,13 +1332,13 @@ public class CelExecutorTest {
 
     Widget widget = Widget.newBuilder()
         .setName("alice")
-        .setKind(Kind.ONE)
+        .setKind(KindProto.Kind.ONE)
         .addSsn("123")
         .addSsn("456")
-        .addPiiArray(Pii.newBuilder().setPii("789").build())
-        .addPiiArray(Pii.newBuilder().setPii("012").build())
-        .putPiiMap("key1", Pii.newBuilder().setPii("345").build())
-        .putPiiMap("key2", Pii.newBuilder().setPii("678").build())
+        .addPiiArray(PiiProto.Pii.newBuilder().setPii("789").build())
+        .addPiiArray(PiiProto.Pii.newBuilder().setPii("012").build())
+        .putPiiMap("key1", PiiProto.Pii.newBuilder().setPii("345").build())
+        .putPiiMap("key2", PiiProto.Pii.newBuilder().setPii("678").build())
         .setSize(123)
         .build();
     ProtobufSchema protobufSchema = new ProtobufSchema(widget.getDescriptorForType());
@@ -1373,13 +1372,13 @@ public class CelExecutorTest {
 
     Widget2 widget = Widget2.newBuilder()
         .setName("alice")
-        .setKind(WidgetProto2.Kind.ONE)
+        .setKind(KindProto.Kind.ONE)
         .addSsn("123")
         .addSsn("456")
-        .addPiiArray(WidgetProto2.Pii.newBuilder().setPii("789").build())
-        .addPiiArray(WidgetProto2.Pii.newBuilder().setPii("012").build())
-        .putPiiMap("key1", WidgetProto2.Pii.newBuilder().setPii("345").build())
-        .putPiiMap("key2", WidgetProto2.Pii.newBuilder().setPii("678").build())
+        .addPiiArray(PiiProto.Pii.newBuilder().setPii("789").build())
+        .addPiiArray(PiiProto.Pii.newBuilder().setPii("012").build())
+        .putPiiMap("key1", PiiProto.Pii.newBuilder().setPii("345").build())
+        .putPiiMap("key2", PiiProto.Pii.newBuilder().setPii("678").build())
         .setSize(123)
         .build();
     ProtobufSchema protobufSchema = new ProtobufSchema(widget.getDescriptorForType());
@@ -1414,13 +1413,13 @@ public class CelExecutorTest {
 
     Widget widget = Widget.newBuilder()
         .setName("alice")
-        .setKind(Kind.ONE)
+        .setKind(KindProto.Kind.ONE)
         .addSsn("123")
         .addSsn("456")
-        .addPiiArray(Pii.newBuilder().setPii("789").build())
-        .addPiiArray(Pii.newBuilder().setPii("012").build())
-        .putPiiMap("key1", Pii.newBuilder().setPii("345").build())
-        .putPiiMap("key2", Pii.newBuilder().setPii("678").build())
+        .addPiiArray(PiiProto.Pii.newBuilder().setPii("789").build())
+        .addPiiArray(PiiProto.Pii.newBuilder().setPii("012").build())
+        .putPiiMap("key1", PiiProto.Pii.newBuilder().setPii("345").build())
+        .putPiiMap("key2", PiiProto.Pii.newBuilder().setPii("678").build())
         .setSize(123)
         .build();
     ProtobufSchema protobufSchema = new ProtobufSchema(widget.getDescriptorForType());
@@ -1445,10 +1444,10 @@ public class CelExecutorTest {
         .setName("alice")
         .addSsn("123")
         .addSsn("456")
-        .addPiiArray(Pii.newBuilder().setPii("789").build())
-        .addPiiArray(Pii.newBuilder().setPii("012").build())
-        .putPiiMap("key1", Pii.newBuilder().setPii("345").build())
-        .putPiiMap("key2", Pii.newBuilder().setPii("678").build())
+        .addPiiArray(PiiProto.Pii.newBuilder().setPii("789").build())
+        .addPiiArray(PiiProto.Pii.newBuilder().setPii("012").build())
+        .putPiiMap("key1", PiiProto.Pii.newBuilder().setPii("345").build())
+        .putPiiMap("key2", PiiProto.Pii.newBuilder().setPii("678").build())
         .setSize(123)
         .build();
     ProtobufSchema protobufSchema = new ProtobufSchema(widget.getDescriptorForType());
@@ -1515,10 +1514,10 @@ public class CelExecutorTest {
         .setLastName("smith")
         .addSsn("123")
         .addSsn("456")
-        .addPiiArray(Pii.newBuilder().setPii("789").build())
-        .addPiiArray(Pii.newBuilder().setPii("012").build())
-        .putPiiMap("key1", Pii.newBuilder().setPii("345").build())
-        .putPiiMap("key2", Pii.newBuilder().setPii("678").build())
+        .addPiiArray(PiiProto.Pii.newBuilder().setPii("789").build())
+        .addPiiArray(PiiProto.Pii.newBuilder().setPii("012").build())
+        .putPiiMap("key1", PiiProto.Pii.newBuilder().setPii("345").build())
+        .putPiiMap("key2", PiiProto.Pii.newBuilder().setPii("678").build())
         .setSize(123)
         .build();
     ProtobufSchema protobufSchema = new ProtobufSchema(widget.getDescriptorForType());
@@ -1598,10 +1597,10 @@ public class CelExecutorTest {
         .setMyboolean(true)
         .addSsn("123")
         .addSsn("456")
-        .addPiiArray(Pii.newBuilder().setPii("789").build())
-        .addPiiArray(Pii.newBuilder().setPii("012").build())
-        .putPiiMap("key1", Pii.newBuilder().setPii("345").build())
-        .putPiiMap("key2", Pii.newBuilder().setPii("678").build())
+        .addPiiArray(PiiProto.Pii.newBuilder().setPii("789").build())
+        .addPiiArray(PiiProto.Pii.newBuilder().setPii("012").build())
+        .putPiiMap("key1", PiiProto.Pii.newBuilder().setPii("345").build())
+        .putPiiMap("key2", PiiProto.Pii.newBuilder().setPii("678").build())
         .setSize(123)
         .build();
     ProtobufSchema protobufSchema = new ProtobufSchema(widget.getDescriptorForType());
@@ -1809,10 +1808,10 @@ public class CelExecutorTest {
         .setName("alice")
         .addSsn("123")
         .addSsn("456")
-        .addPiiArray(Pii.newBuilder().setPii("789").build())
-        .addPiiArray(Pii.newBuilder().setPii("012").build())
-        .putPiiMap("key1", Pii.newBuilder().setPii("345").build())
-        .putPiiMap("key2", Pii.newBuilder().setPii("678").build())
+        .addPiiArray(PiiProto.Pii.newBuilder().setPii("789").build())
+        .addPiiArray(PiiProto.Pii.newBuilder().setPii("012").build())
+        .putPiiMap("key1", PiiProto.Pii.newBuilder().setPii("345").build())
+        .putPiiMap("key2", PiiProto.Pii.newBuilder().setPii("678").build())
         .setSize(123)
         .build();
     ProtobufSchema protobufSchema = new ProtobufSchema(widget.getDescriptorForType());
@@ -1848,10 +1847,10 @@ public class CelExecutorTest {
         .setName("alice")
         .addSsn("123")
         .addSsn("456")
-        .addPiiArray(Pii.newBuilder().setPii("789").build())
-        .addPiiArray(Pii.newBuilder().setPii("012").build())
-        .putPiiMap("key1", Pii.newBuilder().setPii("345").build())
-        .putPiiMap("key2", Pii.newBuilder().setPii("678").build())
+        .addPiiArray(PiiProto.Pii.newBuilder().setPii("789").build())
+        .addPiiArray(PiiProto.Pii.newBuilder().setPii("012").build())
+        .putPiiMap("key1", PiiProto.Pii.newBuilder().setPii("345").build())
+        .putPiiMap("key2", PiiProto.Pii.newBuilder().setPii("678").build())
         .setSize(123)
         .build();
     ProtobufSchema protobufSchema = new ProtobufSchema(widget.getDescriptorForType());

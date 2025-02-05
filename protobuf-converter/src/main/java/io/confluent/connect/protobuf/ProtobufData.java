@@ -1308,7 +1308,7 @@ public class ProtobufData {
 
   private boolean isOptional(FieldDescriptor fieldDescriptor) {
     return fieldDescriptor.toProto().getProto3Optional()
-        || (supportOptionalForProto2 && fieldDescriptor.hasOptionalKeyword());
+        || (supportOptionalForProto2 && fieldDescriptor.isOptional());
   }
 
   private boolean isProto3Optional(FieldDescriptor fieldDescriptor) {
@@ -1530,7 +1530,7 @@ public class ProtobufData {
     }
 
     if (useOptionalForNullables) {
-      if (descriptor.hasOptionalKeyword()) {
+      if (descriptor.isOptional()) {
         builder.optional();
       }
     } else if (!useWrapperForNullables) {
